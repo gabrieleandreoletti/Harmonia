@@ -1,14 +1,10 @@
 package org.elis.controller;
 
-import javax.security.sasl.AuthenticationException;
 
 import org.elis.dto.AlbumDto;
 import org.elis.dto.CustomerDto;
-import org.elis.dto.LoginCustomerDto;
-import org.elis.dto.PlaylistDto;
-import org.elis.dto.RegistrationCustomerDto;
+
 import org.elis.dto.SongDto;
-import org.elis.exception.EntityAlreadyExistException;
 import org.elis.exception.InsertFailureException;
 import org.elis.mapper.CustomerMapper;
 import org.elis.service.definition.AlbumService;
@@ -22,7 +18,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.persistence.EntityNotFoundException;

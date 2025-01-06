@@ -1,22 +1,16 @@
 package org.elis.controller;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.temporal.TemporalAmount;
-import java.util.Date;
+
 import java.util.List;
 
 import org.elis.dto.CustomerDto;
 import org.elis.dto.GenreDto;
 import org.elis.dto.LabelDto;
-import org.elis.dto.LoginCustomerDto;
 import org.elis.dto.PlaylistDto;
 import org.elis.dto.SubscriptionDto;
 import org.elis.exception.EmptyListException;
 import org.elis.exception.InsertFailureException;
-import org.elis.mapper.CustomerMapper;
-import org.elis.mapper.SubscriptionMapper;
+
 import org.elis.service.definition.CustomerService;
 import org.elis.service.definition.GenreService;
 import org.elis.service.definition.LabelService;
@@ -32,9 +26,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
-
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 
@@ -55,8 +46,6 @@ public class AdminController {
 	@Autowired
 	private PlaylistService playlistService;
 
-	@Autowired
-	private JWTUtilities jwtUtilities;
 
 	@PostMapping("/admin/createSubscription")
 	public ResponseEntity<SubscriptionDto> createSubscription(@RequestBody SubscriptionDto json) throws Exception {

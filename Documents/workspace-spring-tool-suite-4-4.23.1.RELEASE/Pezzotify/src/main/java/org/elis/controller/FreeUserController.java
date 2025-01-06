@@ -58,6 +58,11 @@ public class FreeUserController {
 	private FollowService followService;
 	@Autowired
 	private JWTUtilities jwtUtilities;
+	
+	@GetMapping("/registration")
+    public String showRegistrationPage() {
+        return "registrazione";  // Nome del tuo template HTML
+    }
 
 	// UTENTE
 
