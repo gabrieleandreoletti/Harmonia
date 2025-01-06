@@ -26,12 +26,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -61,7 +64,8 @@ public class FreeUserController {
 	private JWTUtilities jwtUtilities;
 	
 	@GetMapping("/all/index")
-    public String showRegistrationPage() {
+    public String showRegistrationPage(Model model) {
+		model.addAttribute("registrationCustomerDto", new RegistrationCustomerDto());
         return "index"; 
     }
 	
@@ -73,7 +77,7 @@ public class FreeUserController {
 	// UTENTE
 
 	@PostMapping("/all/registration")
-	public ResponseEntity<RegistrationCustomerDto> registration(@Valid @RequestBody RegistrationCustomerDto user) {
+	public ResponseEntity<RegistrationCustomerDto> registration(@Valid @ModelAttribute RegistrationCustomerDto user) {
 		try {
 			customerService.insert(user);
 			return ResponseEntity.ok().body(user);

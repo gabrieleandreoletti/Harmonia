@@ -5,25 +5,36 @@
 	<meta charset="UTF-8">
 	<title>Registrazione</title>
 	<link href="../../static/css/registrazione.css" rel="stylesheet">
- </head>
- <body>
-<!--	Spiega che dobbiamo inserire dal file header presente in fragment , il div chiamato blocco-header-->
-	<div th:insert="fragment/header :: blocco-header" ></div>
-	
+</head>
+
+<body>
+	<!--	Spiega che dobbiamo inserire dal file header presente in fragment , il div chiamato blocco-header-->
+	<div th:replace="fragment/commons :: blocco-header"></div>
+
 	<div>
 		<span>Registrazione</span>
-		
-		<form>
-			
+
+		<form th:action="@{/all/registration}" method="post" th:object="${registrationCustomerDto}">
+			<label for="nome">Nome</label>
+			<input type="text" name="nome" th:field="*{nome}" placeholder="inserire il nome">
+			<label for="cognome">Cognome</label>
+			<input type="text" name="nome" th:field="*{cognome}" placeholder="inserire il cognome">
+			<label for="username">Username</label>
+			<input type="text" name="username" th:field="*{username}" placeholder="inserire l'' username">
+			<label for="email">Email</label>
+			<input type="email" name="email" th:field="*{email}" placeholder="inserire la mail">
+			<label for="password">Password</label>
+			<input type="password" name="password" th:field="*{password}" placeholder="inserire il password">
+			<input type="submit" value="Registrati">
 		</form>
 	</div>
-	
-	<div th:insert="fragment/footer :: blocco-footer" ></div>
-	
-	
-	
-	
-	
- </body>
+
+	<div th:replace="fragment/commons :: blocco-footer"></div>
+
+
+
+
+
+</body>
 
 </html>
