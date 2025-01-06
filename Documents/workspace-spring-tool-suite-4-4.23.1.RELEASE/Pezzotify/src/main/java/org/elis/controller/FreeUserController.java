@@ -25,6 +25,7 @@ import org.elis.utilities.JWTUtilities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -37,7 +38,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
-@RestController
+@Controller
 public class FreeUserController {
 
 	@Autowired
@@ -59,9 +60,14 @@ public class FreeUserController {
 	@Autowired
 	private JWTUtilities jwtUtilities;
 	
-	@GetMapping("/registration")
+	@GetMapping("/all/index")
     public String showRegistrationPage() {
-        return "registrazione";  // Nome del tuo template HTML
+        return "index"; 
+    }
+	
+	@GetMapping("/all/accesso")
+    public String showLoginPage() {
+        return "login"; 
     }
 
 	// UTENTE
